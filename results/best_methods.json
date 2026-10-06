@@ -1,0 +1,23 @@
+{
+  "chunking": {
+    "name": "7. Sémantique",
+    "justification": "La méthode « 7. Sémantique » arrive en tête avec un score composite de 1.027 (devant « 3. Par phrase », 0.402 point plus haut). Elle combine la meilleure cohérence interne (0.618, soit +152.2 % vs médiane), une redondance contenue (0.244 contre 0.240 en médiane) et le meilleur comportement en retrieval (F1 = 0.653, MRR = 0.969) : ses chunks portent une idée homogène sans dupliquer le contenu, ce qui maximise à la fois la précision et la position du bon passage dans le classement. Avec 229 chunks pour 1110 en médiane, le coût d'indexation reste raisonnable.",
+    "score": 1.027
+  },
+  "embedding": {
+    "name": "Sentence-BERT",
+    "justification": "« Sentence-BERT » domine avec un score composite de 2.319 (+0.169 devant « Ollama »). Ses pseudo-questions retrouvent leur chunk au rang moyen 1.0 (MRR = 0.969, +5.8 % vs médiane) et son classement est le plus fiable (nDCG = 0.976, soit +4.5 %). Cela confirme l'hypothèse de départ : un espace vectoriel pré-entraîné sur de très grands corpus généralise bien au-delà de notre thèse de 100 pages, là où les modèles entraînés from scratch (Word2Vec, FastText, Doc2Vec) n'ont vu que ~31,588 mots.",
+    "score": 2.319
+  },
+  "retrieval": {
+    "name": "3. Mots-clés (BM25)",
+    "justification": "« 3. Mots-clés (BM25) » obtient le meilleur score global (0.530) : nDCG@5 = 0.725 (+7.2 % vs médiane), MAP@5 = 0.248 (+15.6 %) et MRR = 0.412 (+18.9 %), avec une latence maîtrisée (1.1 ms/requête). Devant « 5. Hybride (BM25+dense) » (0.488), elle gagne parce que les questions de test emploient souvent le vocabulaire exact du document (noms techniques comme « dénitrification », « zones humides »), et le score BM25 capte ces correspondances lexicales avec une précision remarquable pour un coût de calcul dérisoire (aucun modèle d'embedding requis) — les approches denses compensent quand la question reformule le texte, mais sur ce corpus technique le signal lexical domine, et l'écart de latence (2 ms contre 100 ms+) rend le compromis qualité/vitesse imbattable.",
+    "score": 0.53
+  },
+  "pipeline_final": {
+    "chunking": "7. Sémantique",
+    "embedding": "Sentence-BERT",
+    "retrieval": "3. Mots-clés (BM25)",
+    "resume": "Le pipeline retenu enchaîne : découpage « 7. Sémantique » (chunks cohérents, peu redondants), vectorisation « Sentence-BERT » (espace sémantique pré-entraîné), recherche « 3. Mots-clés (BM25) » (meilleur compromis qualité/latence sur nos 20 questions de test)."
+  }
+}

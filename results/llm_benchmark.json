@@ -1,0 +1,16 @@
+{
+  "models": [
+    {
+      "model": "llama3.2:1b",
+      "latence_moy_s": 17.87,
+      "ms_par_token": 179.5,
+      "citations_moy": 2.6
+    },
+    {
+      "model": "llama3.2:3b",
+      "latence_moy_s": null,
+      "ms_par_token": null,
+      "citations_moy": 0.0
+    }
+  ]
+}

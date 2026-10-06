@@ -1,0 +1,133 @@
+{
+  "stage": "chunking",
+  "metrics_columns": [
+    "Nb chunks",
+    "Long. moyenne",
+    "Écart-type",
+    "Similarité intra",
+    "Similarité inter",
+    "Recall@2",
+    "Precision@2",
+    "F1-score",
+    "MRR",
+    "Score composite"
+  ],
+  "higher_is_better": {
+    "Nb chunks": false,
+    "Long. moyenne": null,
+    "Écart-type": false,
+    "Similarité intra": true,
+    "Similarité inter": false,
+    "Recall@2": true,
+    "Precision@2": true,
+    "F1-score": true,
+    "MRR": true,
+    "Score composite": true
+  },
+  "methods": [
+    {
+      "name": "1. Taille fixe",
+      "Nb chunks": 1097.0,
+      "Long. moyenne": 179.9,
+      "Écart-type": 3.5,
+      "Similarité intra": 0.245,
+      "Similarité inter": 0.24,
+      "Recall@2": 0.557,
+      "Precision@2": 0.279,
+      "F1-score": 0.372,
+      "MRR": 0.564,
+      "Score composite": 0.377
+    },
+    {
+      "name": "2. Récursif",
+      "Nb chunks": 1734.0,
+      "Long. moyenne": 112.3,
+      "Écart-type": 31.2,
+      "Similarité intra": 0.229,
+      "Similarité inter": 0.196,
+      "Recall@2": 0.613,
+      "Precision@2": 0.306,
+      "F1-score": 0.408,
+      "MRR": 0.582,
+      "Score composite": 0.441
+    },
+    {
+      "name": "3. Par phrase",
+      "Nb chunks": 1110.0,
+      "Long. moyenne": 175.4,
+      "Écart-type": 107.7,
+      "Similarité intra": 0.249,
+      "Similarité inter": 0.211,
+      "Recall@2": 0.88,
+      "Precision@2": 0.44,
+      "F1-score": 0.587,
+      "MRR": 0.875,
+      "Score composite": 0.625
+    },
+    {
+      "name": "4. Par paragraphe",
+      "Nb chunks": 100.0,
+      "Long. moyenne": 1963.3,
+      "Écart-type": 1189.2,
+      "Similarité intra": 0.33,
+      "Similarité inter": 0.372,
+      "Recall@2": 0.345,
+      "Precision@2": 0.172,
+      "F1-score": 0.23,
+      "MRR": 0.392,
+      "Score composite": 0.188
+    },
+    {
+      "name": "5. Fenêtre glissante",
+      "Nb chunks": 2105.0,
+      "Long. moyenne": 181.5,
+      "Écart-type": 22.6,
+      "Similarité intra": 0.188,
+      "Similarité inter": 0.24,
+      "Recall@2": 0.22,
+      "Precision@2": 0.11,
+      "F1-score": 0.146,
+      "MRR": 0.231,
+      "Score composite": 0.094
+    },
+    {
+      "name": "6. Par tokens",
+      "Nb chunks": 1895.0,
+      "Long. moyenne": 130.2,
+      "Écart-type": 32.6,
+      "Similarité intra": 0.234,
+      "Similarité inter": 0.211,
+      "Recall@2": 0.55,
+      "Precision@2": 0.275,
+      "F1-score": 0.367,
+      "MRR": 0.496,
+      "Score composite": 0.39
+    },
+    {
+      "name": "7. Sémantique",
+      "Nb chunks": 229.0,
+      "Long. moyenne": 172.3,
+      "Écart-type": 115.2,
+      "Similarité intra": 0.618,
+      "Similarité inter": 0.244,
+      "Recall@2": 0.98,
+      "Precision@2": 0.49,
+      "F1-score": 0.653,
+      "MRR": 0.969,
+      "Score composite": 1.027
+    }
+  ],
+  "best": {
+    "name": "7. Sémantique",
+    "justification": "La méthode « 7. Sémantique » arrive en tête avec un score composite de 1.027 (devant « 3. Par phrase », 0.402 point plus haut). Elle combine la meilleure cohérence interne (0.618, soit +152.2 % vs médiane), une redondance contenue (0.244 contre 0.240 en médiane) et le meilleur comportement en retrieval (F1 = 0.653, MRR = 0.969) : ses chunks portent une idée homogène sans dupliquer le contenu, ce qui maximise à la fois la précision et la position du bon passage dans le classement. Avec 229 chunks pour 1110 en médiane, le coût d'indexation reste raisonnable."
+  },
+  "ranking": [
+    "7. Sémantique",
+    "3. Par phrase",
+    "2. Récursif",
+    "6. Par tokens",
+    "1. Taille fixe",
+    "4. Par paragraphe",
+    "5. Fenêtre glissante"
+  ]
+}

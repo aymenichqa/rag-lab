@@ -1,0 +1,71 @@
+{
+  "corpus_path": "data/CORPUS_RAG_reduit_100pages.txt",
+  "corpus_chars": 197344,
+  "cleaning": {
+    "path": "thèse_pdf.pdf",
+    "total_pages": 191,
+    "cover_pages_removed": [
+      1
+    ],
+    "front_matter_removed": [
+      1,
+      3,
+      5,
+      6
+    ],
+    "end_matter_start_page": 174,
+    "pages_after_cleaning": 169,
+    "final_page_count": 100,
+    "truncated_to_budget": true
+  },
+  "winners": {
+    "chunking": "7. Sémantique",
+    "embedding": "Sentence-BERT",
+    "retrieval": "3. Mots-clés (BM25)"
+  },
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "dpr_model": "sentence-transformers/multi-qa-MiniLM-L6-cos-v1",
+  "cross_encoder_model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+  "n_chunks": 229,
+  "embedding_dim": 384,
+  "llm": {
+    "ollama_ready": true,
+    "model": "llama3.2:1b",
+    "benchmark": [
+      {
+        "model": "llama3.2:1b",
+        "latence_moy_s": 17.87,
+        "ms_par_token": 179.5,
+        "citations_moy": 2.6
+      },
+      {
+        "model": "llama3.2:3b",
+        "latence_moy_s": null,
+        "ms_par_token": null,
+        "citations_moy": 0.0
+      }
+    ]
+  },
+  "test_queries": [
+    "Comment les zones humides réduisent-elles la pollution par les nitrates ?",
+    "Quel est le rôle des zones tampons dans le bassin versant ?",
+    "Comment la dénitrification élimine-t-elle les nitrates du sol ?",
+    "Quel impact de l'intensification de l'agriculture sur la qualité de l'eau ?",
+    "Comment mesure-t-on les flux de nitrate dans les zones humides ?",
+    "Quel est le rôle des roseaux dans l'épuration des eaux ?",
+    "Comment les zones humides de fond de vallée piègent-elles les sédiments ?",
+    "Qu'est-ce que la régulation des pollutions azotées diffuses ?",
+    "Comment la végétation des berges influence-t-elle les flux d'azote ?",
+    "Quels facteurs contrôlent la dénitrification dans les sols ?",
+    "Quel est l'effet du drainage agricole sur les nappes ?",
+    "Comment les prairies réduisent-elles le lessivage des nitrates ?",
+    "Quel est le rôle des bactéries dans le cycle de l'azote ?",
+    "Comment la topographie catena influence-t-elle les flux d'eau ?",
+    "Qu'est-ce qu'une zone humide riparienne et son fonctionnement ?",
+    "Comment la rotation des cultures influence la lixiviation de l'azote ?",
+    "Quels outils pour cartographier les zones humides ?",
+    "Comment la matière organique des sols favorise-t-elle la dénitrification ?",
+    "Quel est l'impact des pratiques agricoles sur les émissions de N2O ?",
+    "Comment les zones humides contribuent-elles à la qualité des eaux de surface ?"
+  ]
+}

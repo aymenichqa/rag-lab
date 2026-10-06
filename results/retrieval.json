@@ -1,0 +1,111 @@
+{
+  "stage": "retrieval",
+  "metrics_columns": [
+    "Precision@5",
+    "Recall@5",
+    "MRR",
+    "MAP@5",
+    "NDCG@5",
+    "Cosine sim.",
+    "Latence (ms)",
+    "Score qualité",
+    "Score global"
+  ],
+  "higher_is_better": {
+    "Precision@5": true,
+    "Recall@5": true,
+    "MRR": true,
+    "MAP@5": true,
+    "NDCG@5": true,
+    "Cosine sim.": true,
+    "Latence (ms)": false,
+    "Score qualité": true,
+    "Score global": true
+  },
+  "methods": [
+    {
+      "name": "1. Similarité brute",
+      "Precision@5": 0.19,
+      "Recall@5": 0.179,
+      "MRR": 0.339,
+      "MAP@5": 0.189,
+      "NDCG@5": 0.583,
+      "Cosine sim.": 0.674,
+      "Latence (ms)": 30.2,
+      "Score qualité": 0.36,
+      "Score global": 0.243
+    },
+    {
+      "name": "2. ANN rapide (FAISS)",
+      "Precision@5": 0.19,
+      "Recall@5": 0.179,
+      "MRR": 0.339,
+      "MAP@5": 0.189,
+      "NDCG@5": 0.583,
+      "Cosine sim.": 0.674,
+      "Latence (ms)": 25.6,
+      "Score qualité": 0.36,
+      "Score global": 0.244
+    },
+    {
+      "name": "3. Mots-clés (BM25)",
+      "Precision@5": 0.24,
+      "Recall@5": 0.295,
+      "MRR": 0.412,
+      "MAP@5": 0.248,
+      "NDCG@5": 0.725,
+      "Cosine sim.": 0.507,
+      "Latence (ms)": 1.1,
+      "Score qualité": 0.757,
+      "Score global": 0.53
+    },
+    {
+      "name": "4. Dense spécialisé (DPR)",
+      "Precision@5": 0.17,
+      "Recall@5": 0.143,
+      "MRR": 0.275,
+      "MAP@5": 0.167,
+      "NDCG@5": 0.627,
+      "Cosine sim.": 0.633,
+      "Latence (ms)": 28.3,
+      "Score qualité": 0.172,
+      "Score global": 0.112
+    },
+    {
+      "name": "5. Hybride (BM25+dense)",
+      "Precision@5": 0.24,
+      "Recall@5": 0.216,
+      "MRR": 0.354,
+      "MAP@5": 0.24,
+      "NDCG@5": 0.732,
+      "Cosine sim.": 0.627,
+      "Latence (ms)": 35.1,
+      "Score qualité": 0.713,
+      "Score global": 0.488
+    },
+    {
+      "name": "6. Re-ranking (2 étapes)",
+      "Precision@5": 0.26,
+      "Recall@5": 0.273,
+      "MRR": 0.367,
+      "MAP@5": 0.26,
+      "NDCG@5": 0.742,
+      "Cosine sim.": 0.603,
+      "Latence (ms)": 960.3,
+      "Score qualité": 0.85,
+      "Score global": 0.295
+    }
+  ],
+  "best": {
+    "name": "3. Mots-clés (BM25)",
+    "justification": "« 3. Mots-clés (BM25) » obtient le meilleur score global (0.530) : nDCG@5 = 0.725 (+7.2 % vs médiane), MAP@5 = 0.248 (+15.6 %) et MRR = 0.412 (+18.9 %), avec une latence maîtrisée (1.1 ms/requête). Devant « 5. Hybride (BM25+dense) » (0.488), elle gagne parce que les questions de test emploient souvent le vocabulaire exact du document (noms techniques comme « dénitrification », « zones humides »), et le score BM25 capte ces correspondances lexicales avec une précision remarquable pour un coût de calcul dérisoire (aucun modèle d'embedding requis) — les approches denses compensent quand la question reformule le texte, mais sur ce corpus technique le signal lexical domine, et l'écart de latence (2 ms contre 100 ms+) rend le compromis qualité/vitesse imbattable."
+  },
+  "ranking": [
+    "3. Mots-clés (BM25)",
+    "5. Hybride (BM25+dense)",
+    "6. Re-ranking (2 étapes)",
+    "2. ANN rapide (FAISS)",
+    "1. Similarité brute",
+    "4. Dense spécialisé (DPR)"
+  ]
+}
