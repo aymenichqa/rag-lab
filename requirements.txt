@@ -1,0 +1,46 @@
+# Core numerique
+numpy
+pandas
+scikit-learn
+matplotlib
+seaborn
+
+# Cleaning PDF
+pypdf
+
+# Chunking / embeddings
+langchain
+langchain-community
+langchain-huggingface
+langchain-text-splitters
+sentence-transformers
+transformers
+torch
+tiktoken
+
+# Embeddings via gensim (Word2Vec / GloVe / FastText / Doc2Vec)
+gensim
+scipy<1.16
+
+# Retrieval
+faiss-cpu
+rank-bm25
+
+# Backend
+fastapi
+uvicorn[standard]
+pydantic
+
+# Notebook execution
+jupyter
+nbconvert
+nbformat
+
+# Generation LLM
+requests
+huggingface_hub
+accelerate
+
+# Tests
+pytest
+httpx
