@@ -32,6 +32,7 @@ Ce que je retire du projet : une intuition se vérifie mal sur un seul cas (la s
 
 ```
 ├── PROJET_RAG_COMPLET.ipynb     # Source de vérité : cleaning → 3 comparaisons → génération → exports
+│   (une version consultable sans Jupyter est fournie : PROJET_RAG_COMPLET.html)
 ├── thèse_pdf.pdf                # Corpus brut fourni (thèse académique)
 ├── data/                        # Corpus nettoyé (produit par le notebook)
 ├── results/                     # JSON + artefacts produits par le notebook, consommés par l'API
